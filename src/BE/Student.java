@@ -169,6 +169,7 @@ public class Student extends User {
      * @param totalAbsencePercentage The total absence percentage to set.
      */
     public void setTotalAbsencePercentage(double totalAbsencePercentage) {
-        this.totalAbsencePercentageProperty.set(Math.round(totalAbsencePercentage * 100.0) / 100.0);
+        //this.totalAbsencePercentageProperty.set(Math.round(totalAbsencePercentage * 100.0) / 100.0);
+        this.totalAbsencePercentageProperty.set(totalAbsencePercentage);
     }
 }

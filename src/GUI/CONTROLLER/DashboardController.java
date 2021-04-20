@@ -46,13 +46,18 @@ public class DashboardController implements Initializable {
 
     public void setUser(User u) {
         currentUser = u;
-        FXMLLoader load = new FXMLLoader(getClass().getResource("/GUI/VIEW/StudentDashboardView.fxml"));
-        try {
-            borderPane.setCenter(load.load());
-            StudentDashboardController conn = load.getController();
-            conn.setUser(currentUser);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if (u.getRole() == UserRole.Student) {
+            FXMLLoader load = new FXMLLoader();
+            load.setLocation(getClass().getResource("/GUI/VIEW/StudentDashboardView.fxml"));
+
+            try {
+                borderPane.setCenter(load.load());
+                StudentDashboardController conn = load.getController();
+                conn.setUser(currentUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

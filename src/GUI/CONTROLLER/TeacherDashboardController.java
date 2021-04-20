@@ -46,24 +46,16 @@ public class TeacherDashboardController implements Initializable {
     private JFXComboBox subjectFilterCombobox;
 
     private User user;
-
-    private XYChart.Series data = new XYChart.Series();
     private StudentModel studentModel = StudentModel.getInstance();
 
     private ObservableList<Student> students = FXCollections.observableArrayList();
     private ObservableList<Subject> subjects = FXCollections.observableArrayList();
 
     private Subject selectedSubject;
-    private DataGenerator attendanceDataGenerator;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //Hide initial student abcence charts
-        chartIndividualDay.setVisible(false);
-        chartIndividualSubject.setVisible(false);
-
         initializeCombobox();
         initializeTable();
     }
@@ -97,40 +89,24 @@ public class TeacherDashboardController implements Initializable {
         filterStudentsBySubject();
 
         initializeCharts();
-        getAverageTotalAttendance();
     }
 
     private void initializeCharts() {
+
+        //Hide initial student abscence charts.
+        chartIndividualDay.setVisible(false);
+        chartIndividualSubject.setVisible(false);
+        chartOverallAttendance.setVisible(false);
+
         //
         //INDIVIDUAL DAY ABSENCE
         //
-
-        attendanceDataGenerator = new DataGenerator();
         individualDayNum.setLabel("Procent fravær");
-
         individualDayNum.setLayoutY(100);
 
-        data.setName("Fravær");
-
-        DataGenerator dataGenerator = new DataGenerator();
-
         //provided data
-        //XYChart.Series data1 = new XYChart.Series();
         individualDayNum.setAutoRanging(false);
 
-        /*
-        data1.getData().add(new XYChart.Data("Mon", (int) (Math.random() * 50 + 1)));
-
-        data1.getData().add(new XYChart.Data("Tue", (int) (Math.random() * 50 + 1)));
-        data1.getData().add(new XYChart.Data("Wed", (int) (Math.random() * 50 + 1)));
-        data1.getData().add(new XYChart.Data("Thu", (int) (Math.random() * 50 + 1)));
-        data1.getData().add(new XYChart.Data("Fri", (int) (Math.random() * 50 + 1)));
-
-
-        chartIndividualDay.getData().addAll();
-
-
-         */
         //
         //INDIVIDUAL SUBJECT ABSENCE
         //
@@ -140,18 +116,6 @@ public class TeacherDashboardController implements Initializable {
 
         XYChart.Series data2 = new XYChart.Series();
         data2.setName("Individual Fravær");
-
-        //provided data
-        individualSubNum.setAutoRanging(false);
-
-        data2.getData().add(new XYChart.Data("SCO", (int) (Math.random() * 50 + 1)));
-        data2.getData().add(new XYChart.Data("ITO", (int) (Math.random() * 50 + 1)));
-        data2.getData().add(new XYChart.Data("DBO", (int) (Math.random() * 50 + 1)));
-        data2.getData().add(new XYChart.Data("SDE", (int) (Math.random() * 50 + 1)));
-
-        chartIndividualSubject.getData().addAll(data2);
-
-        //END OF CHARTS
     }
 
     /**
@@ -174,19 +138,6 @@ public class TeacherDashboardController implements Initializable {
         }));
     }
 
-    private void getAverageTotalAttendance() {
-
-        // TODO: Make the average attendance chart work.
-        XYChart.Series data = new XYChart.Series();
-        data.setName("Gennemsnitlige Fravær");
-        overallNumAxis.setLabel(data.getName());
-        overallNumAxis.setAutoRanging(false);
-
-        chartOverallAttendance.setLegendVisible(false);
-        chartOverallAttendance.getData().addAll(data);
-        chartOverallAttendance.getData().add(attendanceDataGenerator.getAttendanceData("Team Qwert", students));
-    }
-
     /**
      * Set the current logged in user.
      *
@@ -206,8 +157,7 @@ public class TeacherDashboardController implements Initializable {
             chartIndividualDay.getData().clear();
             chartIndividualSubject.getData().clear();
 
-            //TODO: få DP til at lave en function til at få fraværs procent over dagene.
-            XYChart.Series days = DataGenerator.getAttendanceData(selectedStudent);
+            XYChart.Series days = DataGenerator.getMostAbsentDays(selectedStudent);
             days.setName("Individual day absence");
 
             XYChart.Series classes = DataGenerator.getAbsencePercentageInEachSubject(selectedStudent);

@@ -1,6 +1,7 @@
 package GUI.MODEL;
 
 import BE.*;
+import BLL.DataGenerator;
 import BLL.StudentManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -90,12 +91,17 @@ public class StudentModel {
 
         if (!students.isEmpty()) {
 
+            var absenceData = new DataGenerator();
             // Add all the lectures to all the students.
             for (Student student : students) {
                 student.setLectures(allLectures);
                 for (Lecture l : allLectures) {
                     student.addAttendance(l);
                 }
+
+                // Add absence percentage.
+                var totalAbsence = absenceData.getTotalAbsencePercentage(student);
+                student.setTotalAbsencePercentage(totalAbsence);
             }
         } else System.out.println("No students! Can't add lectures.");
     }
