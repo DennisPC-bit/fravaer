@@ -10,18 +10,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CONTROLLER.Controller">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CONTROLLER.LogInController">
    <children>
-      <Pane prefHeight="25.0" prefWidth="800.0" styleClass="topbar">
+      <Pane fx:id="topBar" prefHeight="25.0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" styleClass="topbar">
          <children>
             <Label layoutX="354.0" layoutY="4.0" text="Registrer fravær" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fx:id="Exit" fill="#da3333" glyphName="CIRCLE" layoutX="781.0" layoutY="17.0" onMouseClicked="#exit" styleClass="exit" text="" />
-            <FontAwesomeIconView fx:id="Minimize" fill="#eea039" glyphName="CIRCLE" layoutX="761.0" layoutY="17.0" onMouseClicked="#minimize" styleClass="minimize" />
-            <FontAwesomeIconView fx:id="Maximize" fill="#5eb623" glyphName="CIRCLE" layoutX="741.0" layoutY="17.0" onMouseClicked="#maximize" styleClass="maximize" />
+            <FontAwesomeIconView fx:id="exitBtn" fill="#da3333" glyphName="CIRCLE" layoutX="780.0" layoutY="17.0" onMouseClicked="#exit" styleClass="exit" text="" />
+            <FontAwesomeIconView fx:id="iconize" fill="#5eb623" glyphName="CIRCLE" layoutX="760.0" layoutY="17.0" onMouseClicked="#minMax" styleClass="maximize" />
+            <FontAwesomeIconView fx:id="minMaxBtn" fill="#eea039" glyphName="CIRCLE" layoutX="740.0" layoutY="17.0" onMouseClicked="#iconize" styleClass="minimize" />
          </children>
       </Pane>
       <JFXTextField fx:id="txtUsername" focusColor="#7fa7ca" layoutX="289.0" layoutY="287.0" onKeyPressed="#LoginByEnter" prefHeight="25.0" prefWidth="221.0" promptText="Brugernavn" unFocusColor="#b7c4d0" />

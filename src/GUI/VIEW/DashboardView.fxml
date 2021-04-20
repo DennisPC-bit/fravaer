@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,18 +11,6 @@
 
 <AnchorPane fx:id="dRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CONTROLLER.DashboardController">
     <children>
-        <Pane prefHeight="25.0" prefWidth="800.0" styleClass="topbar">
-            <children>
-                <Label layoutX="369.0" layoutY="4.0" text="GUI" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="12.0" />
-                    </font>
-                </Label>
-                <FontAwesomeIconView fill="#da3333" glyphName="CIRCLE" layoutX="781.0" layoutY="17.0" onMouseClicked="#exit" styleClass="exit" />
-                <FontAwesomeIconView fill="#eea039" glyphName="CIRCLE" layoutX="761.0" layoutY="17.0" onMouseClicked="#minimize" styleClass="minimize" />
-                <FontAwesomeIconView fill="#5eb623" glyphName="CIRCLE" layoutX="741.0" layoutY="17.0" onMouseClicked="#maximize" styleClass="maximize" />
-            </children>
-        </Pane>
       <BorderPane fx:id="borderPane" layoutY="25.0" prefHeight="576.0" prefWidth="800.0">
          <left>
             <Pane prefHeight="576.0" prefWidth="238.0" styleClass="side" BorderPane.alignment="CENTER">
@@ -38,12 +25,12 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnRegistrer" layoutX="41.0" layoutY="265.0" onAction="#handleRegistrer" prefHeight="32.0" prefWidth="150.0" styleClass="sidebutton" text="Registrer Fravær">
+                  <JFXButton fx:id="btnRegistrationButton" layoutX="41.0" layoutY="265.0" onAction="#handleRegister" prefHeight="32.0" prefWidth="150.0" styleClass="sidebutton" text="Registrer Fravær">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnRegistreringer" layoutX="41.0" layoutY="305.0" onAction="#handleRegistreringer" prefHeight="32.0" prefWidth="150.0" styleClass="sidebutton" text="Tidl. Registreringer">
+                  <JFXButton fx:id="btnRegistrationsButton" layoutX="41.0" layoutY="305.0" onAction="#handleRegistrations" prefHeight="32.0" prefWidth="150.0" styleClass="sidebutton" text="Tidl. Registreringer">
                      <font>
                         <Font size="15.0" />
                      </font>

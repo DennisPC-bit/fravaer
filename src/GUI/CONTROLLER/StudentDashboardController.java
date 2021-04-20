@@ -4,9 +4,6 @@ import BLL.DataGenerator;
 import GUI.MODEL.StudentModel;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableMapValue;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,16 +12,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -41,10 +32,6 @@ public class StudentDashboardController implements Initializable {
     private NumberAxis numAxis;
     @FXML
     private BarChart chartAbcence;
-
-    //private AbsenceManager absenceManager = new AbsenceManager();
-
-    //private ObservableList<Absence> absence = FXCollections.observableArrayList();
 
     private User user;
 
