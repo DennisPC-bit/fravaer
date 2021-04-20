@@ -4,7 +4,6 @@ import BE.Attendance;
 import BE.Lecture;
 import BE.Student;
 import BE.Subject;
-import com.mysql.cj.conf.ConnectionUrlParser;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -13,11 +12,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
-
 import java.util.*;
 import java.time.DayOfWeek;
-
-import javafx.util.*;
 
 public class DataGenerator {
     private static List<String> subjects = new ArrayList();
@@ -178,7 +174,7 @@ public class DataGenerator {
         List<DayOfWeek> mostAbsentDays = new ArrayList<>(mapOfDays.keySet());
         mostAbsentDays.sort(Comparator.comparingInt(d -> d.getValue()));
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        mostAbsentDays.forEach(d -> series.getData().add(new XYChart.Data<String, Number>(d.toString(), mapOfDays.get(d))));
+        mostAbsentDays.forEach(d -> series.getData().add(new XYChart.Data<String, Number>(d.toString().substring(0,2), mapOfDays.get(d))));
         return series;
     }
 
