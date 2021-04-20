@@ -2,7 +2,6 @@ package DAL.DB;
 
 import BE.*;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

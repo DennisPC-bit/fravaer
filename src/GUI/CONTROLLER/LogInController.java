@@ -10,16 +10,15 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,6 +42,11 @@ public class LogInController implements Initializable {
     private Label lblError;
     @FXML
     private Pane topBar;
+
+    private BorderPane bp = new BorderPane();
+    private FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/VIEW/DashboardView.fxml"));
+
+
     private boolean maximized = false;
 
     private double xOffset = 0;
@@ -62,22 +66,20 @@ public class LogInController implements Initializable {
         Main.getPrimaryStage().setMaximized(maximized);
     }
 
-    public void login() throws IOException {
+    public void login() throws IOException{
+        Parent rootInRoot = loader.load();
         LoginModel loginModel = new LoginModel();
         User user = loginModel.attemptLogin(txtUsername.getText(), txtPassword.getText());
-        BorderPane bp = new BorderPane();
-        FXMLLoader loader = null;
+        topBar.setStyle("-fx-background-color: #b7c4d0;");
         if (user != null) {
             if (user.getRole() == UserRole.Admin) {
-                loader = new FXMLLoader(getClass().getResource("/GUI/VIEW/TeacherDashboardView.fxml"));
                 bp.setTop(topBar);
-                bp.setCenter(loader.load());
-                TeacherDashboardController teacherDashboardController = loader.getController();
-                teacherDashboardController.setUser(user);
+                DashboardController dashboardController = loader.getController();
+                dashboardController.setUser(user);
+                bp.setCenter(rootInRoot);
             } else {
-                loader = new FXMLLoader(getClass().getResource("/GUI/VIEW/DashboardView.fxml"));
                 bp.setTop(topBar);
-                bp.setCenter(loader.load());
+                bp.setCenter(rootInRoot);
                 DashboardController controller = loader.getController();
                 controller.setUser(user);
                 controller.setName(user.getFirstName());

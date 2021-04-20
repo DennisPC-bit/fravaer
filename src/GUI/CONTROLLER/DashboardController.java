@@ -1,29 +1,20 @@
 package GUI.CONTROLLER;
 
 import BE.User;
-import GUI.FxmlLoader;
 import Main.Main;
 import com.jfoenix.controls.JFXButton;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
+import BE.UserRole;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicReference;
 
-public class DashboardController implements Initializable {
+public class DashboardController{
     @FXML
     private AnchorPane dRoot;
     @FXML
@@ -37,15 +28,11 @@ public class DashboardController implements Initializable {
     @FXML
     private JFXButton btnRegistrationsButton;
 
-    private final FxmlLoader loader = new FxmlLoader();
-
     private User currentUser;
-
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     public void setUser(User u) {
         currentUser = u;
+        lblName.setText(String.format("Velkommen til, %s %s", u.getFirstName(),u.getLastName()));
 
         if (u.getRole() == UserRole.Student) {
             FXMLLoader load = new FXMLLoader();
@@ -59,19 +46,8 @@ public class DashboardController implements Initializable {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void exit() {
-        System.exit(0);
-    }
-
-    public void minimize(MouseEvent mouseEvent) {
-        Stage stage = (Stage) dRoot.getScene().getWindow();
-        stage.setIconified(true);
-    }
-
-    public void maximize(MouseEvent mouseEvent) {
-
+        else
+            setIsTeacher();
     }
 
     public void logout() throws IOException {
@@ -136,13 +112,6 @@ public class DashboardController implements Initializable {
 
     public void setName(String name) {
         lblName.setText("Velkommen til, " + name);
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Pane view = loader.getPage("StudentDashboardView");
-        borderPane.setCenter(view);
     }
 
 }

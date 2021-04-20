@@ -1,12 +1,8 @@
 package GUI.CONTROLLER;
 
-import BE.Attendance;
 import BE.Student;
-import BE.User;
-import BLL.AttendanceManager;
 import BLL.LoginManager;
 import GUI.MODEL.AttendanceModel;
-import GUI.MODEL.LoginModel;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;

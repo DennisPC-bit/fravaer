@@ -1,10 +1,6 @@
 package GUI.CONTROLLER;
 
 import BE.*;
-import BLL.DataGenerator;
-import GUI.MODEL.LoginModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;

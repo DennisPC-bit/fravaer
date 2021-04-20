@@ -10,8 +10,6 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-
 public class ChartController implements Initializable {
 
     //AbsenceManager ab =  new AbsenceManager();

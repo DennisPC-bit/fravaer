@@ -15,7 +15,6 @@ public class FxmlLoader {
 
 
     public Pane getPage(String filename){
-
         try{
             URL fileURL = Main.class.getResource("/GUI/VIEW/" + filename + ".fxml");
             if (fileURL == null){
